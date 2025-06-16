@@ -16,6 +16,7 @@ import Graphql from "@/components/Technologies/Graphql";
 import Mongo from "@/components/Technologies/Mongo";
 import Postgresql from "@/components/Technologies/Postgresql";
 import Rust from "@/components/Technologies/Rust";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   const [displayedText, setDisplayedText] = useState("");
@@ -82,12 +83,26 @@ export default function Home() {
           </h2>
           <div className="space-y-4 text-left">
             <p className="text-gray-300 text-base leading-relaxed">
-              I'm a passionate blockchain developer with over a year of experience building decentralized applications and smart contracts. My expertise spans across multiple blockchain ecosystems, with a focus on Ethereum, Polygon, and emerging Layer 2 solutions. I believe in clean, efficient code and user-centric design.
+              I'm a passionate blockchain developer from IIT Roorkee. 
+              I believe in clean, efficient code and user-centric design.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
-              When I'm not coding smart contracts, you'll find me travelling, exploring new technologies, or contributing to open-source projects. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers.
+              When I'm not coding, you'll find me travelling, or reading books. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers.
             </p>
+            
+            {/* Availability Status */}
+            <div className="flex items-center gap-3 mt-6 pt-4 border-t border-zinc-800">
+              <div className="relative">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-30"></div>
+              </div>
+              <span className="text-gray-300 text-sm font-medium">
+                Available for new opportunities
+              </span>
+            </div>
+            <SocialLinks />
           </div>
+
         </div>
         {/* Core Technologies */}
         <div>
@@ -111,7 +126,7 @@ export default function Home() {
             <Postgresql />
             <Rust />
           </div>
-          {/* Quick Stats */}
+          {/* Recent Posts */}
           <div className="mt-16">
             
           </div>
