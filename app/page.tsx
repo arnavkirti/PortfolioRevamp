@@ -1,6 +1,21 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Ethereum from "@/components/Technologies/Ethereum";
+import Solidity from "@/components/Technologies/Solidity";
+import Next from "@/components/Technologies/Next";
+import Tailwind from "@/components/Technologies/Tailwind";
+import Typescript from "@/components/Technologies/Typescript";
+import ReactIcon from "@/components/Technologies/React";
+import Javascript from "@/components/Technologies/Javascript";
+import Git from "@/components/Technologies/Git";
+import Hardhat from "@/components/Technologies/Hardhat";
+import Docker from "@/components/Technologies/Docker";
+import Go from "@/components/Technologies/Go";
+import Graphql from "@/components/Technologies/Graphql";
+import Mongo from "@/components/Technologies/Mongo";
+import Postgresql from "@/components/Technologies/Postgresql";
+import Rust from "@/components/Technologies/Rust";
 
 export default function Home() {
     const [displayedText, setDisplayedText] = useState("");
@@ -29,14 +44,14 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-slate-950 text-white">
+        <div className="min-h-screen bg-zinc-950 text-white">
             {/* Hero Section */}
-            <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
-                <div className="flex flex-col items-center justify-center min-h-[45vh] text-center">
-                    <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold mb-8 tracking-tight">
+            <div className="max-w-2xl mx-auto px-6 sm:px-8">
+                <div className="flex flex-col items-center justify-center min-h-[45vh] text-center py-16">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                         Arnav Kirti
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl leading-relaxed min-h-[3rem] flex items-center justify-center">
+                    <p className="text-base md:text-lg text-gray-400 mb-8 leading-relaxed min-h-[2.5rem] flex items-center justify-center">
                         <span>
                             {displayedText}
                             {showCursor && <span className="animate-pulse text-cyan-400">|</span>}
@@ -44,11 +59,11 @@ export default function Home() {
                     </p>
                     <Link 
                         href="/projects"
-                        className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 font-medium rounded-lg hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 group"
+                        className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-cyan-400 text-cyan-400 font-medium rounded-lg hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 group text-sm"
                     >
                         View My Work
                         <svg 
-                            className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" 
+                            className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" 
                             fill="none" 
                             stroke="currentColor" 
                             viewBox="0 0 24 24"
@@ -60,40 +75,41 @@ export default function Home() {
             </div>
 
             {/* About Me Section */}
-            <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 py-20">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Left Column - Icon */}
-                    <div className="flex justify-center lg:justify-end">
-                        <div className="w-64 h-64 bg-gradient-to-br from-teal-600 to-teal-800 rounded-3xl flex items-center justify-center shadow-2xl">
-                            <div className="w-32 h-32 bg-teal-500 rounded-2xl flex items-center justify-center">
-                                <svg 
-                                    className="w-16 h-16 text-white" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path 
-                                        strokeLinecap="round" 
-                                        strokeLinejoin="round" 
-                                        strokeWidth={2} 
-                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" 
-                                    />
-                                </svg>
-                            </div>
-                        </div>
+            <div className="max-w-2xl mx-auto px-6 sm:px-8 pb-20">
+                <div className="space-y-8">
+                    <h2 className="text-2xl md:text-3xl font-bold text-left">
+                        About Me
+                    </h2>
+                    <div className="space-y-4 text-left">
+                        <p className="text-gray-300 text-base leading-relaxed">
+                            I'm a passionate blockchain developer with over a year of experience building decentralized applications and smart contracts. My expertise spans across multiple blockchain ecosystems, with a focus on Ethereum, Polygon, and emerging Layer 2 solutions. I believe in clean, efficient code and user-centric design.
+                        </p>
+                        <p className="text-gray-300 text-base leading-relaxed">
+                            When I'm not coding smart contracts, you'll find me travelling, exploring new technologies, or contributing to open-source projects. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers. 
+                        </p>
                     </div>
-
-                    {/* Right Column - Content */}
-                    <div className="space-y-6">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                            About Me
-                        </h2>
-                        <p className="text-gray-300 text-lg leading-relaxed">
-                            I'm a passionate blockchain developer with over 5 years of experience building decentralized applications and smart contracts. My expertise spans across multiple blockchain ecosystems, with a focus on Ethereum, Polygon, and emerging Layer 2 solutions.
-                        </p>
-                        <p className="text-gray-300 text-lg leading-relaxed">
-                            When I'm not coding smart contracts, you'll find me exploring the latest in AI/ML technologies and how they can be integrated with blockchain to create innovative solutions. I believe in clean, efficient code and user-centric design.
-                        </p>
+                </div>
+                {/* Core Technologies */}
+                <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-left mt-12">
+                        Core Technologies
+                    </h2>
+                    <div className="flex flex-wrap mt-6">
+                        <Solidity />
+                        <Ethereum />
+                        <Hardhat />
+                        <Javascript />
+                        <Typescript />
+                        <ReactIcon />
+                        <Next />
+                        <Tailwind />
+                        <Git />
+                        <Docker />
+                        <Go />
+                        <Graphql />
+                        <Mongo />
+                        <Postgresql />
+                        <Rust />
                     </div>
                 </div>
             </div>
