@@ -1,17 +1,46 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
+    const [displayedText, setDisplayedText] = useState("");
+    const [showCursor, setShowCursor] = useState(true);
+    const fullText = '"Building Web3 & AI-powered products with a passion for clean design."';
+    
+    useEffect(() => {
+        let currentIndex = 0;
+        const typingSpeed = 50; // milliseconds per character
+        
+        const typeText = () => {
+            if (currentIndex < fullText.length) {
+                setDisplayedText(fullText.slice(0, currentIndex + 1));
+                currentIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else {
+                // Hide cursor after typing is complete
+                setTimeout(() => setShowCursor(false), 1000);
+            }
+        };
+        
+        // Start typing after a brief delay
+        const startDelay = setTimeout(typeText, 500);
+        
+        return () => clearTimeout(startDelay);
+    }, []);
+
     return (
-        <div className="min-h-screen bg-gray-900 text-white">
+        <div className="min-h-screen bg-slate-950 text-white">
             {/* Hero Section */}
             <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
-                <div className="flex flex-col items-center justify-center min-h-[80vh] text-center">
-                    <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
+                <div className="flex flex-col items-center justify-center min-h-[45vh] text-center">
+                    <h1 className="text-5xl md:text-7xl lg:text-7xl font-bold mb-8 tracking-tight">
                         Arnav Kirti
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl leading-relaxed">
-                        "Building Web3 & AI-powered products with a passion for clean design."
+                    <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl leading-relaxed min-h-[3rem] flex items-center justify-center">
+                        <span>
+                            {displayedText}
+                            {showCursor && <span className="animate-pulse text-cyan-400">|</span>}
+                        </span>
                     </p>
                     <Link 
                         href="/projects"
