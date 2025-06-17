@@ -24,7 +24,7 @@ const labProjects: LabProjectProps[] = [
     githubUrl: "https://github.com",
     featured: true,
     complexity: "medium",
-    dateCreated: "2024-12-01",
+    dateCreated: "2025-06-17",
     tags: ["ethereum", "gas", "calculator", "web3"]
   },
   {
@@ -36,7 +36,7 @@ const labProjects: LabProjectProps[] = [
     githubUrl: "https://github.com",
     featured: true,
     complexity: "advanced",
-    dateCreated: "2024-11-15",
+    dateCreated: "2025-06-17",
     tags: ["solidity", "debugging", "smart-contracts", "development"]
   },
   {
@@ -48,7 +48,7 @@ const labProjects: LabProjectProps[] = [
     demoUrl: "https://nft-generator.example.com",
     githubUrl: "https://github.com",
     complexity: "medium",
-    dateCreated: "2024-10-20",
+    dateCreated: "2025-06-17",
     tags: ["nft", "metadata", "ipfs", "generator"]
   },
   {
@@ -59,7 +59,7 @@ const labProjects: LabProjectProps[] = [
     status: "experimental",
     githubUrl: "https://github.com",
     complexity: "advanced",
-    dateCreated: "2024-09-10",
+    dateCreated: "2025-06-17",
     tags: ["defi", "yield", "optimization", "algorithm"]
   },
   {
@@ -71,7 +71,7 @@ const labProjects: LabProjectProps[] = [
     demoUrl: "https://explorer-mini.example.com",
     githubUrl: "https://github.com",
     complexity: "medium",
-    dateCreated: "2024-08-25",
+    dateCreated: "2025-06-17",
     tags: ["blockchain", "explorer", "transactions", "real-time"]
   },
   {
@@ -83,7 +83,7 @@ const labProjects: LabProjectProps[] = [
     githubUrl: "https://github.com",
     featured: true,
     complexity: "advanced",
-    dateCreated: "2024-07-15",
+    dateCreated: "2025-06-17",
     tags: ["dao", "ai", "analysis", "governance"]
   },
   {
@@ -95,7 +95,7 @@ const labProjects: LabProjectProps[] = [
     demoUrl: "https://wallet-widget.example.com",
     githubUrl: "https://github.com",
     complexity: "simple",
-    dateCreated: "2024-06-30",
+    dateCreated: "2025-06-17",
     tags: ["wallet", "web3", "connection", "widget"]
   },
   {
@@ -106,7 +106,7 @@ const labProjects: LabProjectProps[] = [
     status: "development",
     githubUrl: "https://github.com",
     complexity: "medium",
-    dateCreated: "2024-06-01",
+    dateCreated: "2025-06-17",
     tags: ["solidity", "formatter", "code", "development"]
   }
 ];
