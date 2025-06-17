@@ -37,13 +37,13 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      <div className="max-w-2xl mx-auto px-6 sm:px-8 py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight">
             Blog
           </h1>
-          <p className="text-lg text-gray-400 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
             Thoughts on blockchain development, Web3 innovation, and the future of decentralized technology.
           </p>
         </div>

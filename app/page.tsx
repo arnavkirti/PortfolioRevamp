@@ -19,6 +19,7 @@ import Rust from "@/components/Technologies/Rust";
 import RecentPosts from "@/components/RecentPosts";
 import { getRecentBlogPosts } from "@/utils/blog";
 import SocialLinks from "@/components/SocialLinks";
+import Experience from "@/components/Experience";
 
 export default function Home() {
   const [displayedText, setDisplayedText] = useState("");
@@ -52,12 +53,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
       {/* Hero Section */}
-      <div className="max-w-2xl mx-auto px-6 sm:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center min-h-[45vh] text-center py-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
             Arnav Kirti
           </h1>
-          <p className="text-base md:text-lg text-gray-400 mb-8 leading-relaxed min-h-[2.5rem] flex items-center justify-center">
+          <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-8 leading-relaxed min-h-[2.5rem] flex items-center justify-center max-w-2xl">
             <span>
               {displayedText}
               {showCursor && <span className="animate-pulse text-cyan-400">|</span>}
@@ -81,8 +82,8 @@ export default function Home() {
       </div>
 
       {/* About Me Section */}
-      <div className="max-w-2xl mx-auto px-6 sm:px-8 pb-20">
-        <div className="space-y-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="space-y-8 max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-left">
             About Me
           </h2>
@@ -107,14 +108,18 @@ export default function Home() {
             </div>
             <SocialLinks />
           </div>
-
         </div>
+        {/* Experience Section */}
+        <div className="max-w-2xl mx-auto">
+          <Experience />
+        </div>
+        
         {/* Core Technologies */}
-        <div>
+        <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-left mt-12">
             Core Technologies
           </h2>
-          <div className="flex flex-wrap mt-6">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mt-6">
             <Solidity />
             <Ethereum />
             <Hardhat />
@@ -134,8 +139,8 @@ export default function Home() {
           {/* Recent Posts */}
           <RecentPosts posts={recentPosts} maxPosts={3} />
           {/* Quote */}
-          <div>
-            <blockquote className="mt-16 border-l-4 border-cyan-400 pl-6 text-gray-300 italic">
+          <div className="mt-16">
+            <blockquote className="border-l-4 border-cyan-400 pl-4 sm:pl-6 text-gray-300 italic">
               &quot;Code is like humor. When you have to explain it, it&apos;s bad.&quot;
               <span className="block mt-2 text-sm text-gray-500">- Cory House</span>
             </blockquote>

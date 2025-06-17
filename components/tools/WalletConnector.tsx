@@ -38,8 +38,8 @@ export default function WalletConnector() {
   const currentNetwork = networks.find(n => n.id === selectedNetwork);
 
   return (
-    <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-lg p-6">
-      <h3 className="text-lg font-semibold text-cyan-400 mb-4 flex items-center gap-2">
+    <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-lg p-4 sm:p-6">
+      <h3 className="text-lg font-semibold text-cyan-400 mb-4 flex items-center gap-2 flex-wrap">
         🔗 Wallet Connector Demo
         <span className="text-xs bg-purple-400/20 text-purple-400 px-2 py-1 rounded">DEMO</span>
       </h3>
@@ -50,7 +50,7 @@ export default function WalletConnector() {
             <label className="block text-sm font-medium text-gray-300 mb-2">
               Select Network
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {networks.map((network) => (
                 <button
                   key={network.id}
@@ -85,14 +85,14 @@ export default function WalletConnector() {
                   }`}
                 >
                   <span className="text-xl">{wallet.icon}</span>
-                  <div className="flex-1 text-left">
+                  <div className="flex-1 text-left min-w-0">
                     <div className="text-white font-medium">{wallet.name}</div>
                     <div className="text-xs text-gray-400">
                       {wallet.available ? 'Connect' : 'Coming Soon'}
                     </div>
                   </div>
                   {wallet.available && (
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   )}
