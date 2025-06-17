@@ -8,7 +8,6 @@ interface LabStatsProps {
     experimental: number;
     featured: number;
     byCategory: Record<string, number>;
-    byComplexity: Record<string, number>;
   };
   variant?: 'default' | 'compact' | 'minimal';
 }

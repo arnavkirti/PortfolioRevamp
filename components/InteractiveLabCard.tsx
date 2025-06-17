@@ -14,7 +14,6 @@ export default function InteractiveLabCard(props: InteractiveLabCardProps) {
   const {
     title,
     description,
-    technologies,
     status,
     dateCreated,
     tags,
@@ -102,23 +101,6 @@ export default function InteractiveLabCard(props: InteractiveLabCardProps) {
         <p className="text-gray-400 text-sm leading-relaxed mb-4">
           {description}
         </p>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {technologies.slice(0, 4).map((tech, index) => (
-            <span
-              key={index}
-              className="px-2 py-1 text-xs bg-zinc-800/50 text-gray-300 rounded-md border border-zinc-700/50"
-            >
-              {tech}
-            </span>
-          ))}
-          {technologies.length > 4 && (
-            <span className="px-2 py-1 text-xs bg-zinc-800/50 text-gray-300 rounded-md border border-zinc-700/50">
-              +{technologies.length - 4} more
-            </span>
-          )}
-        </div>
 
         {/* Tags */}
         {tags && tags.length > 0 && (

@@ -93,7 +93,7 @@ export default function Home() {
               I believe in clean, efficient code and user-centric design.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
-              When I&apos;m not coding, you&apos;ll find me travelling, reading books or participating in hackathons. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers.
+              When I&apos;m not coding, you&apos;ll find me travelling, or reading books. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers.
             </p>
             
             {/* Availability Status */}
