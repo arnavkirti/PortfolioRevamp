@@ -18,6 +18,7 @@ import Postgresql from "@/components/Technologies/Postgresql";
 import Rust from "@/components/Technologies/Rust";
 import RecentPosts from "@/components/RecentPosts";
 import { BlogPostProps } from "@/components/BlogPost";
+import { getRecentBlogPosts } from "@/utils/blog";
 import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
@@ -25,33 +26,8 @@ export default function Home() {
   const [showCursor, setShowCursor] = useState(true);
   const fullText = '"Building Web3 & AI-powered products with a passion for clean design."';
 
-  // Sample blog posts data
-  const samplePosts: BlogPostProps[] = [
-    {
-      title: "Building Decentralized Applications with Solidity",
-      excerpt: "Learn how to create secure and efficient smart contracts using Solidity. This comprehensive guide covers best practices, common pitfalls, and advanced patterns for DApp development.",
-      date: "2024-12-15",
-      readTime: "8 min read",
-      slug: "building-decentralized-applications-solidity",
-      tags: ["Solidity", "Blockchain", "Smart Contracts", "Web3"]
-    },
-    {
-      title: "Next.js 14 Features That Will Transform Your Development",
-      excerpt: "Explore the latest features in Next.js 14 including improved app router, server components, and enhanced performance optimizations that make React development more efficient.",
-      date: "2024-12-10",
-      readTime: "6 min read",
-      slug: "nextjs-14-features-transform-development",
-      tags: ["Next.js", "React", "Web Development", "Performance"]
-    },
-    {
-      title: "Web3 Integration Patterns for Modern Applications",
-      excerpt: "Discover proven patterns and strategies for integrating Web3 functionality into existing applications. From wallet connections to smart contract interactions.",
-      date: "2024-12-05",
-      readTime: "10 min read",
-      slug: "web3-integration-patterns-modern-applications",
-      tags: ["Web3", "Integration", "DApps", "Architecture"]
-    }
-  ];
+  // Get recent blog posts
+  const recentPosts = getRecentBlogPosts(3);
 
   useEffect(() => {
     let currentIndex = 0;
@@ -157,12 +133,12 @@ export default function Home() {
             <Rust />
           </div>
           {/* Recent Posts */}
-          <RecentPosts posts={samplePosts} maxPosts={3} />
+          <RecentPosts posts={recentPosts} maxPosts={3} />
           {/* Quote */}
           <div>
             <blockquote className="mt-16 border-l-4 border-cyan-400 pl-6 text-gray-300 italic">
-              "Code is like humor. When you have to explain it, it’s bad."
-              <span className="block mt-2 text-sm text-gray-500">– Cory House</span>
+              "Code is like humor. When you have to explain it, it's bad."
+              <span className="block mt-2 text-sm text-gray-500">- Cory House</span>
             </blockquote>
           </div>
         </div>
