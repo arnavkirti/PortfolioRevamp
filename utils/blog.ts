@@ -2,54 +2,54 @@ import { BlogPostProps } from "@/components/BlogPost";
 
 // Blog posts data
 const blogPosts: BlogPostProps[] = [
-  {
-    title: "Building Decentralized Applications with Solidity",
-    excerpt: "Learn how to create secure and efficient smart contracts using Solidity. This comprehensive guide covers best practices, common pitfalls, and advanced patterns for DApp development.",
-    date: "2024-12-15",
-    readTime: "8 min read",
-    slug: "building-decentralized-applications-solidity",
-    tags: ["Solidity", "Blockchain", "Smart Contracts", "Web3"]
-  },
-  {
-    title: "Next.js 14 Features That Will Transform Your Development",
-    excerpt: "Explore the latest features in Next.js 14 including improved app router, server components, and enhanced performance optimizations that make React development more efficient.",
-    date: "2024-12-10",
-    readTime: "6 min read",
-    slug: "nextjs-14-features-transform-development",
-    tags: ["Next.js", "React", "Web Development", "Performance"]
-  },
-  {
-    title: "Web3 Integration Patterns for Modern Applications",
-    excerpt: "Discover proven patterns and strategies for integrating Web3 functionality into existing applications. From wallet connections to smart contract interactions.",
-    date: "2024-12-05",
-    readTime: "10 min read",
-    slug: "web3-integration-patterns-modern-applications",
-    tags: ["Web3", "Integration", "DApps", "Architecture"]
-  },
-  {
-    title: "TypeScript Best Practices for Blockchain Development",
-    excerpt: "Enhance your blockchain development workflow with TypeScript. Learn about type safety for smart contracts, Web3 libraries, and frontend integration patterns.",
-    date: "2024-11-28",
-    readTime: "7 min read",
-    slug: "typescript-best-practices-blockchain-development",
-    tags: ["TypeScript", "Blockchain", "Best Practices", "Development"]
-  },
-  {
-    title: "Gas Optimization Techniques in Smart Contracts",
-    excerpt: "Master the art of writing gas-efficient smart contracts. This guide covers optimization strategies, common gas traps, and tools for measuring contract efficiency.",
-    date: "2024-11-20",
-    readTime: "12 min read",
-    slug: "gas-optimization-techniques-smart-contracts",
-    tags: ["Solidity", "Optimization", "Gas", "Smart Contracts"]
-  },
-  {
-    title: "Building Responsive DApps with Tailwind CSS",
-    excerpt: "Create beautiful, responsive decentralized applications using Tailwind CSS. Learn component design patterns and responsive strategies for Web3 interfaces.",
-    date: "2024-11-15",
-    readTime: "9 min read",
-    slug: "building-responsive-dapps-tailwind-css",
-    tags: ["Tailwind CSS", "DApps", "Frontend", "Responsive Design"]
-  }
+//   {
+//     title: "Building Decentralized Applications with Solidity",
+//     excerpt: "Learn how to create secure and efficient smart contracts using Solidity. This comprehensive guide covers best practices, common pitfalls, and advanced patterns for DApp development.",
+//     date: "2024-12-15",
+//     readTime: "8 min read",
+//     slug: "building-decentralized-applications-solidity",
+//     tags: ["Solidity", "Blockchain", "Smart Contracts", "Web3"]
+//   },
+//   {
+//     title: "Next.js 14 Features That Will Transform Your Development",
+//     excerpt: "Explore the latest features in Next.js 14 including improved app router, server components, and enhanced performance optimizations that make React development more efficient.",
+//     date: "2024-12-10",
+//     readTime: "6 min read",
+//     slug: "nextjs-14-features-transform-development",
+//     tags: ["Next.js", "React", "Web Development", "Performance"]
+//   },
+//   {
+//     title: "Web3 Integration Patterns for Modern Applications",
+//     excerpt: "Discover proven patterns and strategies for integrating Web3 functionality into existing applications. From wallet connections to smart contract interactions.",
+//     date: "2024-12-05",
+//     readTime: "10 min read",
+//     slug: "web3-integration-patterns-modern-applications",
+//     tags: ["Web3", "Integration", "DApps", "Architecture"]
+//   },
+//   {
+//     title: "TypeScript Best Practices for Blockchain Development",
+//     excerpt: "Enhance your blockchain development workflow with TypeScript. Learn about type safety for smart contracts, Web3 libraries, and frontend integration patterns.",
+//     date: "2024-11-28",
+//     readTime: "7 min read",
+//     slug: "typescript-best-practices-blockchain-development",
+//     tags: ["TypeScript", "Blockchain", "Best Practices", "Development"]
+//   },
+//   {
+//     title: "Gas Optimization Techniques in Smart Contracts",
+//     excerpt: "Master the art of writing gas-efficient smart contracts. This guide covers optimization strategies, common gas traps, and tools for measuring contract efficiency.",
+//     date: "2024-11-20",
+//     readTime: "12 min read",
+//     slug: "gas-optimization-techniques-smart-contracts",
+//     tags: ["Solidity", "Optimization", "Gas", "Smart Contracts"]
+//   },
+//   {
+//     title: "Building Responsive DApps with Tailwind CSS",
+//     excerpt: "Create beautiful, responsive decentralized applications using Tailwind CSS. Learn component design patterns and responsive strategies for Web3 interfaces.",
+//     date: "2024-11-15",
+//     readTime: "9 min read",
+//     slug: "building-responsive-dapps-tailwind-css",
+//     tags: ["Tailwind CSS", "DApps", "Frontend", "Responsive Design"]
+//   }
 ];
 
 // Utility functions

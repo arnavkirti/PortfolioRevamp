@@ -17,7 +17,6 @@ import Mongo from "@/components/Technologies/Mongo";
 import Postgresql from "@/components/Technologies/Postgresql";
 import Rust from "@/components/Technologies/Rust";
 import RecentPosts from "@/components/RecentPosts";
-import { BlogPostProps } from "@/components/BlogPost";
 import { getRecentBlogPosts } from "@/utils/blog";
 import SocialLinks from "@/components/SocialLinks";
 
@@ -89,11 +88,11 @@ export default function Home() {
           </h2>
           <div className="space-y-4 text-left">
             <p className="text-gray-300 text-base leading-relaxed">
-              I'm a passionate blockchain developer from IIT Roorkee. 
+              I&apos;m a passionate blockchain developer from IIT Roorkee. 
               I believe in clean, efficient code and user-centric design.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
-              When I'm not coding, you'll find me travelling, or reading books. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers.
+              When I&apos;m not coding, you&apos;ll find me travelling, reading books or participating in hackathons. I thrive in collaborative environments and enjoy sharing knowledge with fellow developers.
             </p>
             
             {/* Availability Status */}
@@ -137,7 +136,7 @@ export default function Home() {
           {/* Quote */}
           <div>
             <blockquote className="mt-16 border-l-4 border-cyan-400 pl-6 text-gray-300 italic">
-              "Code is like humor. When you have to explain it, it's bad."
+              &quot;Code is like humor. When you have to explain it, it&apos;s bad.&quot;
               <span className="block mt-2 text-sm text-gray-500">- Cory House</span>
             </blockquote>
           </div>

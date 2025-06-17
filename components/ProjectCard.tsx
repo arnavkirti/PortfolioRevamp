@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 
 export interface ProjectProps {
   title: string;
@@ -44,7 +44,9 @@ export default function ProjectCard({
       {/* Project Image/Preview */}
       <div className="h-48 bg-gradient-to-br from-zinc-800 to-zinc-900 relative overflow-hidden">
         {imageUrl ? (
-          <img 
+          <Image 
+          width={400}
+            height={200}
             src={imageUrl} 
             alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

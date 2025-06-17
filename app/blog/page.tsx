@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { 
-  getAllBlogPosts, 
   getAllTags, 
   filterBlogPosts, 
   getBlogStats 
@@ -16,9 +15,8 @@ export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Get data using utility functions
-  const allBlogPosts = getAllBlogPosts();
-  const allTags = getAllTags();
   const blogStats = getBlogStats();
+  const allTags = getAllTags();
 
   // Filter posts based on search and tag
   const filteredPosts = filterBlogPosts(searchTerm, selectedTag);
@@ -50,22 +48,26 @@ export default function BlogPage() {
           </p>
         </div>
 
-        {/* Search and Filter Section */}
-        <div className="mb-12 space-y-6">
-          {/* Search Bar */}
+        {/* Stats Section */}
+        <BlogStats stats={blogStats} variant="minimal" />
+
+        {/* Search Section */}
+        <div className="mb-16 space-y-6">
           <BlogSearch
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
             placeholder="Search posts..."
           />
 
-          {/* Tags Filter */}
-          <TagFilter
-            tags={allTags}
-            selectedTag={selectedTag}
-            onTagChange={setSelectedTag}
-            allLabel="All Posts"
-          />
+          {/* Only show tag filter if there's a search or it's useful */}
+          {allTags.length > 3 && (
+            <TagFilter
+              tags={allTags}
+              selectedTag={selectedTag}
+              onTagChange={setSelectedTag}
+              allLabel="All Posts"
+            />
+          )}
         </div>
 
         {/* Posts Grid */}
@@ -76,9 +78,6 @@ export default function BlogPage() {
           onClearFilters={handleClearFilters}
           showClearFilters={!!(searchTerm || selectedTag)}
         />
-
-        {/* Stats Section */}
-        <BlogStats stats={blogStats} />
       </div>
     </div>
   );

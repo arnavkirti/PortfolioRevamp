@@ -7,10 +7,30 @@ interface BlogStatsProps {
     avgReadTime: number;
     postsByMonth?: Record<string, number>;
   };
-  variant?: 'default' | 'compact';
+  variant?: 'default' | 'compact' | 'minimal';
 }
 
 export default function BlogStats({ stats, variant = 'default' }: BlogStatsProps) {
+  if (variant === 'minimal') {
+    return (
+      <div className="flex justify-center items-center gap-12 mb-20">
+        <div className="text-center">
+          <div className="text-4xl font-light text-white mb-2 tracking-wide">
+            {stats.totalPosts}
+          </div>
+          <div className="text-xs uppercase tracking-widest text-gray-600 font-medium">Articles</div>
+        </div>
+        <div className="w-px h-12 bg-gradient-to-b from-transparent via-zinc-700 to-transparent"></div>
+        <div className="text-center">
+          <div className="text-4xl font-light text-white mb-2 tracking-wide">
+            {stats.avgReadTime || "0"}
+          </div>
+          <div className="text-xs uppercase tracking-widest text-gray-600 font-medium">Min Read</div>
+        </div>
+      </div>
+    );
+  }
+
   if (variant === 'compact') {
     return (
       <div className="grid grid-cols-3 gap-6 mb-12">

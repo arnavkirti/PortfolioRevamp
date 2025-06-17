@@ -4,31 +4,41 @@ import {
   getAllProjects, 
   getFeaturedProjects, 
   getProjectStats, 
-  getAllTechnologies, 
-  filterProjects,
   projectCategories 
 } from "@/utils/projects";
-import { CategoryFilter, TechnologyFilter } from "@/components/ProjectFilters";
+import { CategoryFilter } from "@/components/ProjectFilters";
 import ProjectStats from "@/components/ProjectStats";
 import ProjectsGrid from "@/components/ProjectsGrid";
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedTechnology, setSelectedTechnology] = useState<string | null>(null);
 
   // Get data using utility functions
   const allProjects = getAllProjects();
   const featuredProjects = getFeaturedProjects();
   const projectStats = getProjectStats();
-  const allTechnologies = getAllTechnologies();
 
-  // Filter projects based on selected filters
-  const filteredProjects = filterProjects(selectedCategory, selectedTechnology);
+  // Filter projects based on selected category only
+  const filteredProjects = selectedCategory === "all" 
+    ? allProjects 
+    : allProjects.filter(project => {
+        // Simple category matching logic here
+        const title = project.title.toLowerCase();
+        switch (selectedCategory) {
+          case "defi":
+            return title.includes("defi") || title.includes("yield") || title.includes("farming");
+          case "nft":
+            return title.includes("nft") || title.includes("marketplace");
+          case "infrastructure":
+            return title.includes("bridge") || title.includes("infrastructure");
+          default:
+            return true;
+        }
+      });
 
   // Handle filter clearing
   const handleClearFilters = () => {
     setSelectedCategory("all");
-    setSelectedTechnology(null);
   };
 
   return (
@@ -40,33 +50,27 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="text-lg text-gray-400 leading-relaxed">
-            A collection of blockchain projects, DeFi protocols, and Web3 applications I've built with modern technologies.
+            A collection of blockchain projects, DeFi protocols, and Web3 applications I&apos;ve built with modern technologies.
           </p>
         </div>
 
         {/* Stats Section */}
-        <ProjectStats stats={projectStats} variant="compact" />
+        <ProjectStats stats={projectStats} variant="minimal" />
 
-        {/* Filter Section */}
-        <div className="mb-12 space-y-6">
-          {/* Category Filter */}
-          <CategoryFilter
-            categories={projectCategories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-          />
-
-          {/* Technology Filter */}
-          <TechnologyFilter
-            technologies={allTechnologies}
-            selectedTechnology={selectedTechnology}
-            onTechnologyChange={setSelectedTechnology}
-            maxVisible={8}
-          />
+        {/* Filter Section - Only show if there are multiple categories */}
+        <div className="mb-16 space-y-6">
+          {/* Only show category filter if needed */}
+          {projectCategories.length > 3 && (
+            <CategoryFilter
+              categories={projectCategories.slice(0, 4)} // Limit to most important categories
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+            />
+          )}
         </div>
 
         {/* Featured Projects */}
-        {selectedCategory === "all" && !selectedTechnology && featuredProjects.length > 0 && (
+        {selectedCategory === "all" && featuredProjects.length > 0 && (
           <div className="mb-16">
             <ProjectsGrid
               projects={featuredProjects}
@@ -78,25 +82,21 @@ export default function ProjectsPage() {
         {/* All Projects */}
         <ProjectsGrid
           projects={filteredProjects}
-          title={
-            selectedCategory === "all" 
-              ? "All Projects" 
-              : projectCategories.find(c => c.id === selectedCategory)?.label || "Projects"
-          }
+          title={selectedCategory === "all" ? "All Projects" : "Projects"}
           emptyMessage="No projects found"
-          emptyDescription="Try adjusting your filter criteria."
+          emptyDescription="Check back for new projects."
           onClearFilters={handleClearFilters}
-          showClearFilters={true}
+          showClearFilters={selectedCategory !== "all"}
         />
 
         {/* Call to Action */}
         <div className="mt-20 pt-12 border-t border-zinc-800/50 text-center">
           <h3 className="text-xl font-semibold mb-4">Interested in collaborating?</h3>
           <p className="text-gray-400 mb-6">
-            I'm always open to discussing new opportunities and innovative blockchain projects.
+            I&apos;m always open to discussing new opportunities and innovative blockchain projects.
           </p>
           <a
-            href="mailto:your-email@example.com"
+            href="mailto:arnav.tkd@gmail.com"
             className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-400 text-zinc-900 font-medium rounded-lg hover:bg-cyan-300 transition-all duration-200"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

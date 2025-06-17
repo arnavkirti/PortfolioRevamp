@@ -6,10 +6,30 @@ interface ProjectStatsProps {
     planning?: number;
     featured?: number;
   };
-  variant?: 'default' | 'compact';
+  variant?: 'default' | 'compact' | 'minimal';
 }
 
 export default function ProjectStats({ stats, variant = 'default' }: ProjectStatsProps) {
+  if (variant === 'minimal') {
+    return (
+      <div className="flex justify-center items-center gap-12 mb-20">
+        <div className="text-center">
+          <div className="text-4xl font-light text-white mb-2 tracking-wide">
+            {stats.total}
+          </div>
+          <div className="text-xs uppercase tracking-widest text-gray-600 font-medium">Projects</div>
+        </div>
+        <div className="w-px h-12 bg-gradient-to-b from-transparent via-zinc-700 to-transparent"></div>
+        <div className="text-center">
+          <div className="text-4xl font-light text-white mb-2 tracking-wide">
+            {stats.completed}
+          </div>
+          <div className="text-xs uppercase tracking-widest text-gray-600 font-medium">Completed</div>
+        </div>
+      </div>
+    );
+  }
+
   if (variant === 'compact') {
     return (
       <div className="grid grid-cols-3 gap-6 mb-12">
