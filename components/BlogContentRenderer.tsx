@@ -33,10 +33,37 @@ interface ContentSectionProps {
   section: BlogContentSection;
 }
 
+// Helper function to detect URLs and render them as clickable links
+function renderTextWithLinks(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a 
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-cyan-400 hover:text-cyan-300 underline transition-colors duration-200"
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 function ContentSection({ section }: ContentSectionProps) {
   switch (section.type) {
     case 'paragraph':
-      return <p className="text-gray-300 leading-relaxed">{section.content}</p>;
+      return (
+        <p className="text-gray-300 leading-relaxed">
+          {renderTextWithLinks(section.content || '')}
+        </p>
+      );
     
     case 'heading':
       const level = section.level || 2;
@@ -87,7 +114,7 @@ function ContentSection({ section }: ContentSectionProps) {
           {section.items?.map((item, index) => (
             <li key={index} className="text-gray-300 relative">
               <span className="absolute -left-6 text-cyan-400">•</span>
-              {item}
+              {renderTextWithLinks(item)}
             </li>
           ))}
         </ul>

@@ -50,6 +50,14 @@ const blogPosts: BlogPostProps[] = [
 //     slug: "building-responsive-dapps-tailwind-css",
 //     tags: ["Tailwind CSS", "DApps", "Frontend", "Responsive Design"]
 //   }
+{
+  title: "🚀 A Practical Guide to Writing Gas-Efficient Solidity Smart Contracts",
+  excerpt: "Learn how to write gas-efficient Solidity smart contracts with practical tips, optimization techniques, and best practices. This guide covers everything from basic optimizations to advanced patterns for reducing gas costs in your decentralized applications.",
+  date: "2025-06-19",
+  readTime: "7 min read",
+  slug: "practical-guide-writing-gas-efficient-solidity-smart-contracts",
+  tags: ["Solidity", "Smart Contracts", "Gas Optimization", "Foundry", "Blockchain"]
+}
 ];
 
 // Utility functions

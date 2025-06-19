@@ -208,6 +208,334 @@ export default function Dashboard() {
         content: "When designing Web3-integrated applications, consider separating blockchain logic from business logic to maintain clean architecture and testability."
       }
     ]
+  },
+  {
+    slug: "practical-guide-writing-gas-efficient-solidity-smart-contracts",
+    sections: [
+      {
+        type: "heading",
+        level: 2,
+        content: "🧠 Why Gas Optimization Matters"
+      },
+      {
+        type: "paragraph",
+        content: "Every operation in Ethereum consumes gas, a unit that represents computational cost. Efficient contracts cost users less to interact with, improve UX, and help your dApp scale. Plus, gas optimization often aligns with better logic and cleaner code."
+      },
+      {
+        type: "paragraph",
+        content: "In this blog, we'll walk through:"
+      },
+      {
+        type: "list",
+        items: [
+          "Common gas inefficiencies and how to fix them",
+          "Tools like Foundry for gas benchmarking",
+          "Real Solidity code examples",
+          "Practical optimization patterns"
+        ]
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "⚒️ Setup: Foundry for Gas Benchmarking"
+      },
+      {
+        type: "paragraph",
+        content: "We'll use Foundry, a powerful tool for Ethereum development, to benchmark gas usage. Install it with:"
+      },
+      {
+        type: "code",
+        language: "bash",
+        content: `curl -L https://foundry.paradigm.xyz | bash 
+foundryup`
+      },
+      {
+        type: "paragraph",
+        content: "Create a new project:"
+      },
+      {
+        type: "code",
+        language: "bash",
+        content: `forge init GasOptimization
+cd GasOptimization
+`
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: "⚠️ Common Gas Pitfalls and Fixes"
+      },
+      {
+        type: "list",
+        items: [
+          "🔁 Avoid Unbounded Loops"
+        ]
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// ❌ Bad
+function sum(uint[] memory arr) public pure returns (uint) {
+    uint total;
+    for (uint i = 0; i < arr.length; i++) {
+        total += arr[i];
+    }
+    return total;
+}`
+      },
+      {
+        type: "paragraph",
+        content: "Why it's bad: The loop depends on input size. Gas costs become unbounded."
+      },
+      {
+        type: "paragraph",
+        content: "✅ Fix: Avoid loops for storage/memory writes. Offload to frontends or batch with limits."
+      },
+      {
+        type: "list",
+        items: [
+          "📦 Use uint256 Over Smaller Types"
+        ]
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// ❌ Bad
+uint8 a = 1;
+uint8 b = 2;`
+      },
+      {
+        type: "paragraph",
+        content: "Why it's bad: EVM reads in 32-byte words. Mixing types causes inefficient packing."
+      },
+      {
+        type: "paragraph",
+        content: "✅ Fix: Use uint256 everywhere. It’s the EVM’s native word size and avoids packing issues."
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `uint256 a = 1;
+uint256 b = 2;
+`
+      },
+      {
+        type: "list",
+        items: [
+          "💾 Pack Storage Variables"
+        ]
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// ❌ Unpacked
+uint256 a;
+bool b;
+uint256 c;
+`
+      },
+      {
+        type: "paragraph",
+        content: "Why it's bad: Each storage slot costs 20,000 gas. Unpacked variables waste space."
+      },
+      {
+        type: "paragraph",
+        content: "✅ Fix: Pack variables into fewer slots. Use structs or arrays to group related data."
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// ✅ Packed
+unint256 a;
+unint256 b;
+bool c;
+`
+      },
+      {
+        type: "list",
+        items: [
+          "🗂️ Use calldata for External Function Parameters"
+        ]
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// ❌ Memory
+function process(uint[] memory data) external {}
+
+// ✅ Calldata
+function process(uint[] calldata data) external {}
+`
+      },
+      {
+        type: "paragraph",
+        content: "calldata is cheaper for external functions since it avoids memory allocation."
+      },
+      {
+        type: "list",
+        items: [
+          "🧠 Short-Circuit Booleans"
+        ]
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// ❌ Evaluates both
+if (checkA() && checkB()) {}
+
+// ✅ Short-circuits if checkA() is false
+if (!checkA()) return;
+if (checkB()) {}
+`
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "🧪 Benchmarking With Foundry"
+      },
+      {
+        type: "paragraph",
+        content: "Let’s create a simple test to compare gas."
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Example Contract"
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// SPDX-License-Identifier: MIT
+// src/GasExample.sol
+pragma solidity ^0.8.24;
+
+contract GasExample {
+    // Inefficient
+    function sumMemory(uint[] memory arr) external pure returns (uint total) {
+        for (uint i = 0; i < arr.length; i++) {
+            total += arr[i];
+        }
+    }
+
+    // Efficient (calldata)
+    function sumCalldata(uint[] calldata arr) external pure returns (uint total) {
+        for (uint i = 0; i < arr.length; i++) {
+            total += arr[i];
+        }
+    }
+}
+`
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Test File"
+      },
+      {
+        type: "code",
+        language: "solidity",
+        content: `// SPDX-License-Identifier: MIT
+// test/GasExample.t.sol
+pragma solidity ^0.8.24;
+
+import "forge-std/Test.sol";
+import "../src/GasExample.sol";
+
+contract GasExampleTest is Test {
+    GasExample gasExample;
+
+    function setUp() public {
+        gasExample = new GasExample();
+    }
+
+    function testGasSumMemory() public view {
+        uint[] memory arr = new uint[](5);
+        for (uint i = 0; i < 5; i++) {
+            arr[i] = i;
+        }
+        uint result = gasExample.sumMemory(arr);
+        // Expected result: 0 + 1 + 2 + 3 + 4 = 10
+        assertEq(result, 10);
+    }
+
+    function testGasSumCalldata() public view {
+        uint[] memory arr = new uint[](5);
+        for (uint i = 0; i < 5; i++) {
+            arr[i] = i;
+        }
+        uint result = gasExample.sumCalldata(arr);
+        // Expected result: 0 + 1 + 2 + 3 + 4 = 10
+        assertEq(result, 10);
+    }
+}
+`
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Run Benchmark"
+      },
+      {
+        type: "code",
+        language: "bash",
+        content: `forge test --gas-report`
+      },
+      {
+        type: "paragraph",
+        content: "You will see gas usage for each function. Compare the results to see the impact of optimizations."
+      },
+      {
+        type: "code",
+        content: `| Function Name             | Max   |
+|----------------------|-------|
+| testGasSumCalldata   | 2226  |
+| testGasSumMemory     | 3699  |
+`
+      },
+      {
+        type: "paragraph",
+        content: "calldata saved us over 1,000 gas compared to memory!"
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "✅ General Optimization Checklist"
+      },
+      {
+        type: "list",
+        items: [
+          "Use the latest Solidity version for optimizations",
+          "Avoid unbounded loops and recursion",
+          "Use calldata for external function parameters",
+          "Pack storage variables efficiently",
+          "Short-circuit boolean expressions",
+          "Minimize state changes in functions",
+          "Leverage libraries like OpenZeppelin for common patterns"
+        ]
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "🧠 Final Thoughts"
+      },
+      {
+        type: "paragraph",
+        content: "Gas optimization isn't about micro-obsessing — it’s about knowing where it matters. If your contract will be called millions of times or touches expensive opcodes, optimize. Otherwise, prioritize readability and security first."
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "📚 Further Reading"
+      },
+      {
+        type: "list",
+        items: [
+          "https://ethereum.org/en/developers/docs/gas/",
+          "https://www.rareskills.io/post/gas-optimization",
+          "Foundry Documentation for Testing and Benchmarking"
+        ]
+      }
+    ]
   }
 ];
 
