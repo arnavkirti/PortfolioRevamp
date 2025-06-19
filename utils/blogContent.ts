@@ -486,7 +486,7 @@ contract GasExampleTest is Test {
       },
       {
         type: "code",
-        content: `| Function Name             | Max   |
+        content: `| Function Name        | Max   |
 |----------------------|-------|
 | testGasSumCalldata   | 2226  |
 | testGasSumMemory     | 3699  |
